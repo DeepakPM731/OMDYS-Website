@@ -402,7 +402,18 @@ h2 {
     3px 4px 1px #100, 5px 4px 1px #161515, 1px 1px 1px #100, 1px 1px 1px #161515,
     5px 6px 1px #100, 7px 6px 1px #161515;
 }
-/* =Responsive Styles
+
+.consn {
+  color: #f6f8e2;
+
+  font-size: 55px;
+  text-align: center;
+  letter-spacing: 15px;
+  text-shadow: 3px 3px 20px rgb(169, 80, 80), -2px 1px 30px rgb(169, 80, 80);
+  /* text-shadow: 3px 3px 20px #ff99cc, -2px 1px 30px #ff99cc; */
+}
+
+/* Responsive Styles
 -------------------------------------------------------------- */
 
 @media (max-width: 320px) {
@@ -440,6 +451,13 @@ h2 {
     font-size: 30px;
     /* color: #00d9ec; */
     font-weight: 300;
+  }
+  .consn {
+    color: #f6f8e2;
+
+    font-size: 30px;
+    text-align: center;
+    letter-spacing: 5px;
   }
   .sub-title {
     font-size: ;
@@ -557,6 +575,13 @@ h2 {
   .soon {
     font-size: 28px;
   }
+  .consn {
+    color: #f6f8e2;
+
+    font-size: 30px;
+    text-align: center;
+    letter-spacing: 5px;
+  }
 }
 
 /* Landscape Phone */
@@ -593,6 +618,13 @@ h2 {
   .soon {
     font-size: 30px;
     font-weight: 500;
+  }
+  .consn {
+    color: #f6f8e2;
+
+    font-size: 40px;
+    text-align: center;
+    letter-spacing: 5px;
   }
   .sub-title {
     font-size: ;
@@ -701,6 +733,13 @@ h2 {
     font-size: 40px;
     font-weight: 500;
   }
+  .consn {
+    color: #f6f8e2;
+
+    font-size: 45px;
+    text-align: center;
+    letter-spacing: 5px;
+  }
   .sub-title {
     font-size: 20px;
     line-height: 20px;
@@ -806,6 +845,13 @@ h2 {
     margin-top: 35px;
     margin-right: 5px;
     margin-left: 5px;
+  }
+  .consn {
+    color: #f6f8e2;
+
+    font-size: 45px;
+    text-align: center;
+    letter-spacing: 5px;
   }
   .logo {
     margin-top: 15px;
@@ -948,6 +994,13 @@ h2 {
     font-size: 55px;
     font-weight: 600;
   }
+  .consn {
+    color: #f6f8e2;
+
+    font-size: 50px;
+    text-align: center;
+    letter-spacing: 5px;
+  }
   #countdown div span {
     font-size: 44px;
     line-height: 44px;
@@ -1088,6 +1141,13 @@ h2 {
     font-size: 50px;
     font-weight: 500;
   }
+  .consn {
+    color: #f6f8e2;
+
+    font-size: 55px;
+    text-align: center;
+    letter-spacing: 5px;
+  }
   .sub-title {
     font-size: 25px;
     line-height: 25px;
@@ -1185,6 +1245,13 @@ h2 {
     font-size: 80px;
     font-weight: 500;
   }
+  .consn {
+    color: #f6f8e2;
+
+    font-size: 55px;
+    text-align: center;
+    letter-spacing: 5px;
+  }
   #countdown div span {
     font-size: 54px;
     line-height: 54px;
@@ -1216,6 +1283,13 @@ h2 {
   .soon {
     font-size: 80px;
     font-weight: 500;
+  }
+  .consn {
+    color: #f6f8e2;
+
+    font-size: 60px;
+    text-align: center;
+    letter-spacing: 5px;
   }
   .sub-title {
     font-size: 30px;
