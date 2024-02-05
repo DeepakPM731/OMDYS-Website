@@ -577,10 +577,15 @@ h2 {
   }
   .consn {
     color: #f6f8e2;
-
-    font-size: 30px;
+    font-size: 35px;
     text-align: center;
-    letter-spacing: 5px;
+    letter-spacing: 7px;
+  }
+  #consni {
+  }
+  #consnii {
+    /* margin-bottom: 20px; */
+    /* padding-bottom: 515px; */
   }
 }
 
