@@ -3,15 +3,63 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+      name="viewport"
+    />
+    <title>OMDYS</title>
+    <link
+      href="./images/logo/favicon.png"
+      rel="shortcut icon"
+      type="image/png"
+    />
+    <link
+      href="http://fonts.googleapis.com/css?family=Roboto:400,100,900"
+      rel="stylesheet"
+      type="text/css"
+    />
   </head>
   <body>
-    <h1>Brochures</h1>
-    <h1>Brochures</h1>
-    <h1>Brochures</h1>
-    <h1>Brochures</h1>
-    <h1>Brochures</h1>
-    <h1>Brochures</h1>
-    <h1>Brochures</h1>
+    <embed
+      src="/pdf/Omdys - Product Catalog - Electronic Components.pdf"
+      style="width: 100vw; height: 100vh"
+    />
+    <!-- Link to download PDF -->
+    <a
+      id="downloadLink"
+      href="/pdf/Omdys - Product Catalog - Electronic Components.pdf"
+      download
+      style="display: none"
+      >Download PDF</a
+    >
   </body>
+
+  <script>
+    window.onload = function () {
+      // Check if the cookie has already been set
+      var pdfDownloaded = getCookie('pdfDownloaded');
+      if (!pdfDownloaded) {
+        // If not, simulate a click on the download link
+        document.getElementById('downloadLink').click();
+        // Set a cookie to indicate that the PDF has been downloaded
+        document.cookie =
+          'pdfDownloaded=true; expires=Fri, 31 Dec 9999 23:59:59 GMT';
+      }
+    };
+
+    // Function to get cookie value
+    function getCookie(name) {
+      var nameEQ = name + '=';
+      var cookies = document.cookie.split(';');
+      for (var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i];
+        while (cookie.charAt(0) == ' ')
+          cookie = cookie.substring(1, cookie.length);
+        if (cookie.indexOf(nameEQ) == 0)
+          return cookie.substring(nameEQ.length, cookie.length);
+      }
+      return null;
+    }
+  </script>
 </html>
