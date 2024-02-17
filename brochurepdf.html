@@ -48,27 +48,27 @@
     const pdfViewer = document.getElementById('pdf-viewer');
 
     pdfjsLib.getDocument(pdfUrl).promise.then((pdfDoc) => {
-      for (let pageNum = 1; pageNum <= pdfDoc.numPages; pageNum++) {
-        pdfDoc.getPage(pageNum).then((page) => {
-          const viewport = page.getViewport({ scale: 1 });
-          const scale = pdfViewer.clientWidth / viewport.width; // Calculate scale based on the viewer width and page width
-          const scaledViewport = page.getViewport({ scale });
-          const canvas = document.createElement('canvas');
-          const context = canvas.getContext('2d');
+  for (let pageNum = 1; pageNum <= pdfDoc.numPages; pageNum++) {
+    pdfDoc.getPage(pageNum).then((page) => {
+      const viewport = page.getViewport({ scale: 1 });
+      const scale = pdfViewer.clientWidth / viewport.width * window.devicePixelRatio; // Adjust scale based on device pixel ratio
+      const scaledViewport = page.getViewport({ scale });
+      const canvas = document.createElement('canvas');
+      const context = canvas.getContext('2d');
 
-          pdfViewer.appendChild(canvas);
-          canvas.height = scaledViewport.height;
-          canvas.width = scaledViewport.width;
+      pdfViewer.appendChild(canvas);
+      canvas.height = scaledViewport.height;
+      canvas.width = scaledViewport.width;
 
-          const renderContext = {
-            canvasContext: context,
-            viewport: scaledViewport,
-          };
+      const renderContext = {
+        canvasContext: context,
+        viewport: scaledViewport,
+      };
 
-          page.render(renderContext);
-        });
-      }
+      page.render(renderContext);
     });
+  }
+});
 
     // Trigger PDF download after rendering
     window.onload = function () {
