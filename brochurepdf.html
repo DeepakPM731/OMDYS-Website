@@ -47,11 +47,16 @@
     const pdfUrl = '/pdf/Omdys - Product Catalog - Electronic Components.pdf';
     const pdfViewer = document.getElementById('pdf-viewer');
 
-    pdfjsLib.getDocument(pdfUrl).promise.then((pdfDoc) => {
+   pdfjsLib.getDocument(pdfUrl).promise.then((pdfDoc) => {
   for (let pageNum = 1; pageNum <= pdfDoc.numPages; pageNum++) {
     pdfDoc.getPage(pageNum).then((page) => {
       const viewport = page.getViewport({ scale: 1 });
-      const scale = pdfViewer.clientWidth / viewport.width * window.devicePixelRatio; // Adjust scale based on device pixel ratio
+      let scale;
+      if (window.innerWidth < 800) { // Check if device width is less than 800px
+        scale = pdfViewer.clientWidth / viewport.width; // Set scale to fit page width
+      } else {
+        scale = pdfViewer.clientWidth / viewport.width * window.devicePixelRatio; // Adjust scale based on device pixel ratio
+      }
       const scaledViewport = page.getViewport({ scale });
       const canvas = document.createElement('canvas');
       const context = canvas.getContext('2d');
