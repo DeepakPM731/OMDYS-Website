@@ -19,12 +19,17 @@
       rel="stylesheet"
       type="text/css"
     />
+    <style>
+      #pdf-viewer {
+        width: 80%; /* Set the width of the viewer */
+        height: 600px; /* Set the height of the viewer */
+        margin: 0 auto; /* Center the viewer horizontally */
+      }
+    </style>
   </head>
   <body>
-    <embed
-      src="/pdf/Omdys - Product Catalog - Electronic Components.pdf"
-      style="width: 100vw; height: 100vh"
-    />
+    <div id="pdf-viewer"></div>
+
     <!-- Link to download PDF -->
     <a
       id="downloadLink"
@@ -35,14 +40,38 @@
     >
   </body>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.min.js"></script>
   <script>
+    // PDF.js initialization
+    const pdfUrl = '/pdf/Omdys - Product Catalog - Electronic Components.pdf';
+    const pdfViewer = document.getElementById('pdf-viewer');
+
+    pdfjsLib.getDocument(pdfUrl).promise.then((pdfDoc) => {
+      for (let pageNum = 1; pageNum <= pdfDoc.numPages; pageNum++) {
+        pdfDoc.getPage(pageNum).then((page) => {
+          const canvas = document.createElement('canvas');
+          const context = canvas.getContext('2d');
+          pdfViewer.appendChild(canvas);
+
+          const viewport = page.getViewport({ scale: 1.5 });
+          canvas.height = viewport.height;
+          canvas.width = viewport.width;
+
+          const renderContext = {
+            canvasContext: context,
+            viewport: viewport,
+          };
+
+          page.render(renderContext);
+        });
+      }
+    });
+
+    // Trigger PDF download after rendering
     window.onload = function () {
-      // Check if the cookie has already been set
-      var pdfDownloaded = getCookie('pdfDownloaded');
+      const pdfDownloaded = getCookie('pdfDownloaded');
       if (!pdfDownloaded) {
-        // If not, simulate a click on the download link
         document.getElementById('downloadLink').click();
-        // Set a cookie to indicate that the PDF has been downloaded
         document.cookie =
           'pdfDownloaded=true; expires=Fri, 31 Dec 9999 23:59:59 GMT';
       }
