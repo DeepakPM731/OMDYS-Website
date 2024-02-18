@@ -19,78 +19,17 @@
       rel="stylesheet"
       type="text/css"
     />
-    <style>
-      #pdf-viewer {
-        width: 100%; /* Set the width of the viewer to 100% */
-        height: auto; /* Set the height to auto for responsiveness */
-        max-width: 800px; /* Optional: Set max-width to limit the viewer's width */
-        margin: 0 auto; /* Center the viewer horizontally */
-      }
-    </style>
   </head>
   <body>
-    <div id="pdf-viewer"></div>
-
-    <!-- Link to download PDF -->
-    <a
-      id="downloadLink"
-      href="/pdf/Omdys - Product Catalog - Electronic Components.pdf"
-      download
-      style="display: none"
-      >Download PDF</a
+    <object
+      data="./pdf/Omdys.pdf"
+      type="application/pdf"
+      width="100%"
+      height="700"
     >
+      <p>
+        <a href="./pdf/Omdys.pdf">Click here to download the Catalogue.</a>
+      </p>
+    </object>
   </body>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.min.js"></script>
-  <script>
-    // PDF.js initialization
-    const pdfUrl = '/pdf/Omdys - Product Catalog - Electronic Components.pdf';
-    const pdfViewer = document.getElementById('pdf-viewer');
-
-      pdfjsLib.getDocument(pdfUrl).promise.then((pdfDoc) => {
-      for (let pageNum = 1; pageNum <= pdfDoc.numPages; pageNum++) {
-        pdfDoc.getPage(pageNum).then((page) => {
-          const viewport = page.getViewport({ scale: 1 });
-          const scale = pdfViewer.clientWidth / viewport.width; // Calculate scale based on the viewer width and page width
-          const scaledViewport = page.getViewport({ scale });
-          const canvas = document.createElement('canvas');
-          const context = canvas.getContext('2d');
-
-          pdfViewer.appendChild(canvas);
-          canvas.height = scaledViewport.height;
-          canvas.width = scaledViewport.width;
-
-          const renderContext = {
-            canvasContext: context,
-            viewport: scaledViewport,
-          };
-
-          page.render(renderContext);
-        });
-      }
-    });
-    // Trigger PDF download after rendering
-    window.onload = function () {
-      const pdfDownloaded = getCookie('pdfDownloaded');
-      if (!pdfDownloaded) {
-        document.getElementById('downloadLink').click();
-        document.cookie =
-          'pdfDownloaded=true; expires=Fri, 31 Dec 9999 23:59:59 GMT';
-      }
-    };
-
-    // Function to get cookie value
-    function getCookie(name) {
-      var nameEQ = name + '=';
-      var cookies = document.cookie.split(';');
-      for (var i = 0; i < cookies.length; i++) {
-        var cookie = cookies[i];
-        while (cookie.charAt(0) == ' ')
-          cookie = cookie.substring(1, cookie.length);
-        if (cookie.indexOf(nameEQ) == 0)
-          return cookie.substring(nameEQ.length, cookie.length);
-      }
-      return null;
-    }
-  </script>
 </html>
