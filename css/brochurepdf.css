@@ -1,6 +1,6 @@
 body {
   margin: auto;
-  height: 100vh;
+  height: auto;
   width: 100vw;
   /* background-color: red; */
   /* background-image: url('images/bg/vehicles-boxes-supply-chain-representation.jpg'); */
@@ -127,6 +127,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 15px;
 }
 /* .logo {
   margin-top: 15px;
